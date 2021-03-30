@@ -3,14 +3,19 @@ import Register from "./Register";
 import {useHistory} from "react-router-dom";
 import {useContext} from "react";
 import {UserContext} from "../contexts/UserContext";
+
 import {useFormik, yupToFormErrors} from "formik";
+import Cookies from "js-cookie";
 import * as Yup from "yup";
+import axios from "axios";
 export default function Login(props){
     const [showLoader, setShowLoader] = useState(true);
     const [error, setError] = useState({ visible: false, message: "" });
     const history=useHistory(UserContext);
-    const isAuthenticated=useContext(UserContext);
-    const [user, setUser] = useContext(UserContext);
+    const [isAuthenticated,setisAuthenticated]=useContext(UserContext);
+    const [user,setUser] = useContext(UserContext);
+    const [connectedUser, setConnectedUser] = useState("sousou");
+
 
     const validate = values => {
         const errors = {}
@@ -24,7 +29,7 @@ export default function Login(props){
             setShowLoader(false);
 
         if (!values.password) {
-            errors.password = 'Required'
+            errors.password = ''
         } else if (values.password.length < 8) {
             errors.password = 'Must be 8 characters or more'
         } else if (values.password === '12345678') {
@@ -44,8 +49,23 @@ export default function Login(props){
         },
         validate,
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
-            history.replace('/home')
+            const userss=axios.post('http://localhost:3000/login/',{
+
+                Email:values.email,
+                Password:values.password,
+            })
+                .then(response=>{setUser(true);
+                    setConnectedUser(JSON.stringify(response.data.user.FirstName));
+                    sessionStorage.setItem("user",JSON.stringify(response.data.user.FirstName).valueOf(response.data.user.username));
+                    alert("welcome"+JSON.stringify(JSON.stringify(response.data), null, 2));
+
+                    history.push('/home');
+window.location.reload();
+console.log(sessionStorage.getItem("user"));
+
+
+                }).catch(error=>console.log(error))
+
         }
 
     })
@@ -84,8 +104,7 @@ export default function Login(props){
                                             onChange={formik.handleChange}
                                             onBlur={formik.handleBlur}
                                             value={formik.values.email}/>
-                                      <p>  {formik.touched.email && formik.errors.email ? <div className='error'>{formik.errors.email}</div> : null}
-                                      </p>
+
 
 
                                                                          </div>
@@ -100,10 +119,8 @@ export default function Login(props){
                                             onChange={formik.handleChange}
                                             onBlur={formik.handleBlur}
                                             value={formik.values.password}/>
-                                        {formik.touched.password && formik.errors.password ? <div className='error'>{formik.errors.password}</div> : null}
 
                                     </div>
-
                                     <div className="form-footer">
                                         <button type="submit" className="btn btn-outline-primary-2" disabled={!(formik.isValid && formik.dirty)} >
                                             <span>LOG IN</span>

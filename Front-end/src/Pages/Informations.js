@@ -39,7 +39,10 @@ export default function Informations(props){
                 <form>
                     <div className="row">
                         <div className="col-sm-6">
-                            <input type="number" className="form-control" id="cname" placeholder="Age"/>
+                            <input type="number"
+                                   className="form-control"
+                                   id="cname"
+                                   placeholder="Age"/>
                         </div>
                         <div className="col-sm-6">
                             <select name="sortby" id="sortby"
@@ -54,11 +57,17 @@ export default function Informations(props){
                     </div>
                     <div className="row">
                         <div className="col-sm-6">
-                            <input type="number" className="form-control" id="cname" placeholder="Height"
+                            <input type="number"
+                                   className="form-control"
+                                   id="cname"
+                                   placeholder="Height"
                                    />
                         </div>
                         <div className="col-sm-6">
-                            <input type="number" className="form-control" id="cemail" placeholder="Weight"
+                            <input type="number"
+                                   className="form-control"
+                                   id="cemail"
+                                   placeholder="Weight"
                                    />
                         </div>
                     </div>

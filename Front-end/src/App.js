@@ -16,44 +16,25 @@ import AddToWardrobe from "./Pages/AddToWardrobe";
 import Shop from "./Pages/Shop";
 import Outfits from "./Pages/Outfits";
 import All from "./Pages/all";
-
 function App() {
-    const [connectedUser, setConnectedUser] = useState(null);
-
+    const [connectedUser, setConnectedUser] = useState("sousou");
+    const user=sessionStorage.getItem('user');
     return (
         <>
-            <UserContext.Provider value={[connectedUser, setConnectedUser]}>
+            <UserContext.Provider value={[connectedUser, setConnectedUser] }>
                 <Header></Header>
                 <div>
                     <BrowserRouter>
                         <Suspense fallback={<p>...Loading page please wait</p>}>
-                            {connectedUser ? (
+                            {user ? (
                                 <Switch>
                                     <Route
                                         path="/shop"
                                         render={(props) => <Shop {...props} />}></Route>
-
-                               </Switch>
-                            ) : (
-
-
-                                <Switch>
-
-
-                                    {/*Before Login*/}
                                     <Route
                                         path="/addWardrobe"
                                         render={(props) => <AddToWardrobe {...props} />}></Route>
 
-                                    <Route
-                                        path="/home"
-                                        render={(props) => <Home {...props} />}></Route>
-
-                                    <Route
-                                        path="/categories"
-                                        render={(props) => <Categories {...props}
-                                        />}>
-                                    </Route>
                                     <Route
                                         path="/product/:Categories"
                                         render={(props) => <SingleCategories {...props} />}
@@ -61,6 +42,23 @@ function App() {
                                     <Route
                                         path="/wardrobe"
                                         render={(props) => <Wardrobe {...props} />}></Route>
+
+                                </Switch>
+
+                            ) : (
+
+
+                                <Switch>
+
+
+                                    {/*Before Login*/}
+
+                                    <Route
+                                        path="/home"
+                                        render={(props) => <Home {...props} />}></Route>
+
+
+
 
                                     <Route
                                         path="/login"
@@ -88,7 +86,7 @@ function App() {
 
                                     <Route
                                         exact
-                                        render={() => <p>You are not logged in!</p>}
+                                        render={() => <Login></Login>}
                                     ></Route>
                                 </Switch>
                                 )}

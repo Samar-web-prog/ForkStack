@@ -34,6 +34,12 @@ var User=new Schema({
     style:{
         type:String,
     },
+    sex:{
+        type:String,
+    },
+    Age:{
+        type:Number,
+    },
     
 });
 module.exports =mongoose.model('user1',User);

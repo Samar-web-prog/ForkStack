@@ -18,17 +18,22 @@ async (req, res, next)=>{
     FirstName:joi.string().required(),
     LastName:joi.string().required(),
     Email:joi.string().required().email(),
-
     username:joi.string().required(),
     Password:joi.string().required().min(8),
     Country:joi.string().required(),
     Phone:joi.number(),
     sex:joi.string(),
-
+    Age:joi.number(),
     style:Joi.string(),
     
   });
-
+  //Get All The Users
+  controllerUser.getUser=async(req,res)=>{
+    const user1=User.find()
+    .then(users=>{res.status(200).json(users)})
+    .catch(error=>{res.status(400).json(error)})
+ 
+  }
 controllerUser.register=async(req,res)=>{
     var validation=schema.validate(req.body);
     const {error}=schema.validate(req.body);
@@ -82,9 +87,29 @@ controllerUser.login=async(req,res)=>{
  if(!validPassword) return res.status(400).send("Password is wrong");
 //create JWT Token
 const token=jwt.sign({_id:user._id},process.env.TOKEN_SECRET);
-res.header('auth-token',token).send(token);
+res.header('auth-token',token).send({"user":user,"token":token});
+  
 
 };
+//Update The user
+controllerUser.Update=async(req,res)=>{
+  User.findByIdAndUpdate(req.params.id, 
+    req.body,
+  function (err, data) {
+    if (err)
+        console.log(err);
+    res.json(data);
+});
+}
+//Delete User
+controllerUser.deleteUser=async(req,res)=>{
+  User.deleteOne({_id:req.params.idd})
+  .then(function(){
+    console.log("Data deleted"); // Success
+}).catch(function(error){
+    console.log(error); // Failure
+});
+}
 
 module.exports=controllerUser;
 

@@ -4,10 +4,7 @@ import {UserContext} from "../contexts/UserContext";
 
 export default function Header(props) {
     const [user, setUser] = useContext(UserContext);
-
-    function toggleUser() {
-        !user ? setUser({name: "test", roles: ["admin"]}) : setUser(null);
-    }
+   const user1=sessionStorage.getItem('user');
 
     return (
         <header className="header">
@@ -71,10 +68,6 @@ export default function Header(props) {
 
                         <nav className="main-nav">
                             <ul className="menu sf-arrows">
-                                <li>
-                                    connected user :{user?.name ?? "none"}{" "}
-                                    <button onClick={toggleUser}>Toggle user</button>
-                                </li>
                                 <li className="megamenu-container active">
                                     <a href="https://portotheme.com/html/molla/index.html"
                                        className="sf-with-ul">Home</a>
@@ -88,37 +81,48 @@ export default function Header(props) {
                                        className="sf-with-ul">Shop</a>
 
                                 </li>
+                                {user1 ?
+                                    (<li>
+                                        <a href="#"
+                                           className="sf-with-ul">My Wardrobe</a>
 
-                                <li>
-                                    <a href="#"
-                                       className="sf-with-ul">My Wardrobe</a>
+                                        <ul>
+                                            <li><a href="/all">My Fitting Room</a></li>
+                                            <li><a
+                                                href="#">All Clothes</a>
+                                            </li>
 
-                                    <ul>
-                                        <li><a href="/all">My Fitting Room</a></li>
-                                        <li><a
-                                            href="#">All Clothes</a>
-                                        </li>
+                                            <li>
+                                                <a href="/addwardrobe">Add To My Wardrobe</a>
 
-                                        <li>
-                                            <a href="/addwardrobe">Add To My Wardrobe</a>
-
-                                        </li>
-
-
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="/outfits"
-                                       className="sf-with-ul">My Outfits</a>
+                                            </li>
 
 
-                                </li>
+                                        </ul>
+                                    </li>
+                                    ):(<h1></h1>)}
+                                {user1 ?(
+                                    <li>
+                                        <a href="/outfits"
+                                           className="sf-with-ul">My Outfits</a>
 
 
-                                <li>
-                                    <a href="/login"
-                                       className="sf-with-ul">LogIn</a>
-                                </li>
+                                    </li>):
+                                (<h1></h1>)
+                                }
+
+                                {user1 ?(
+                                    <li>
+                                        <button onClick={()=>{sessionStorage.removeItem('user');
+                                                            window.location.reload();}}
+                                           className="sf-with-ul">LogOut</button>
+                                    </li> ):(
+                                    <li>
+                                        <a href="/login"
+                                           className="sf-with-ul">LogIn</a>
+                                    </li>
+
+                                    )}
                             </ul>
                         </nav>
                     </div>

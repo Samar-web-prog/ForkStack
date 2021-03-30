@@ -7,6 +7,9 @@ router.get('/all',index.getAll);
 router.get('/all1',controllerUser.getAll);
 router.post('/register',controllerUser.register);
 router.post('/login',controllerUser.login);
-
+router.put('/updteUser/:id',controllerUser.Update);
+router.put('/del/:id',controllerUser.deleteUser);
+router.get('/alluser',controllerUser.getUser);
+router.delete('/deletedUser/:idd',controllerUser.deleteUser);
 router.post('/hello',index.postUser1);
 module.exports = router;

@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-export default class Home extends Component {
-    render() {
+import React, {Component, useState} from "react";
+export default function Home() {
+    const [connectedUser, setConnectedUser] = useState("sousou");
         return (
             <>
-                <h1></h1>
+                <h1>{connectedUser}</h1>
             </>
         )
-    }
+
 }
