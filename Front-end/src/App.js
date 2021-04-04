@@ -1,12 +1,11 @@
 import React, {Suspense, useState} from "react";
 import './App.css';
 import {BrowserRouter, Switch, Route, Router, Link} from "react-router-dom";
-import Home from "./Components/Home";
+import Home from "./Pages/Home";
 import Header from './Components/Header';
 import Wardrobe from './Pages/wadrobe';
 import SingleCategories from './Components/SingleCategories';
 import Footer from "./Components/Footer";
-import Categories from "./Components/Categories";
 import Login from "./Pages/Login";
 import Informations from "./Pages/Informations";
 import Register from "./Pages/Register";
@@ -16,6 +15,9 @@ import AddToWardrobe from "./Pages/AddToWardrobe";
 import Shop from "./Pages/Shop";
 import Outfits from "./Pages/Outfits";
 import All from "./Pages/all";
+import Choises from "./Pages/choices";
+import Categories from "./Components/Categories";
+import {ClothesUser} from "./Pages/ClothesUser";
 function App() {
     const [connectedUser, setConnectedUser] = useState("sousou");
     const user=sessionStorage.getItem('user');
@@ -32,6 +34,10 @@ function App() {
                                         path="/shop"
                                         render={(props) => <Shop {...props} />}></Route>
                                     <Route
+                                        path="/home"
+                                        render={(props) => <Home {...props} />}></Route>
+
+                                    <Route
                                         path="/addWardrobe"
                                         render={(props) => <AddToWardrobe {...props} />}></Route>
 
@@ -42,7 +48,21 @@ function App() {
                                     <Route
                                         path="/wardrobe"
                                         render={(props) => <Wardrobe {...props} />}></Route>
-
+                                    <Route
+                                        path="/outfits"
+                                        render={(props) => <Outfits {...props} />}></Route>
+                                    <Route
+                                        path="/all"
+                                        render={(props) => <All {...props} />}
+                                    ></Route>
+                                    <Route
+                                        path="/categories"
+                                        render={(props) => <Categories {...props} />}
+                                    ></Route>
+                                    <Route
+                                        path="/ClothesUser"
+                                        render={(props) => <ClothesUser {...props} />}
+                                    ></Route>
                                 </Switch>
 
                             ) : (
@@ -57,7 +77,9 @@ function App() {
                                         path="/home"
                                         render={(props) => <Home {...props} />}></Route>
 
-
+                                    <Route
+                                        path="/shop"
+                                        render={(props) => <Shop {...props} />}></Route>
 
 
                                     <Route
@@ -65,11 +87,12 @@ function App() {
                                         render={(props) => <Login {...props} />}
                                     ></Route>
                                     <Route
+                                        path="/choices"
+                                        render={(props) => <Choises {...props} />}></Route>
+                                    <Route
                                         path="/register"
                                         render={(props) => <Register {...props} />}></Route>
-                                    <Route
-                                        path="/outfits"
-                                        render={(props) => <Outfits {...props} />}></Route>
+
                                     <Route
                                         path="/informations"
                                         render={(props) => <Informations {...props} />}
@@ -78,16 +101,14 @@ function App() {
                                         path="/preferences"
                                         render={(props) => <Preferences {...props} />}
                                     ></Route>
-                                    <Route
-                                        path="/all"
-                                        render={(props) => <All {...props} />}
-                                    ></Route>
+
 
 
                                     <Route
                                         exact
-                                        render={() => <Login></Login>}
+                                        render={() => <Home></Home>}
                                     ></Route>
+
                                 </Switch>
                                 )}
                                 </Suspense>

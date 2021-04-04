@@ -7,6 +7,8 @@ export default function Header(props) {
    const user1=sessionStorage.getItem('user');
 
     return (
+        <div className="page-wrapper">
+
         <header className="header">
             <div className="header-top">
                 <div className="container">
@@ -89,7 +91,7 @@ export default function Header(props) {
                                         <ul>
                                             <li><a href="/all">My Fitting Room</a></li>
                                             <li><a
-                                                href="#">All Clothes</a>
+                                                href="/ClothesUser">All My Clothes</a>
                                             </li>
 
                                             <li>
@@ -113,9 +115,9 @@ export default function Header(props) {
 
                                 {user1 ?(
                                     <li>
-                                        <button onClick={()=>{sessionStorage.removeItem('user');
+                                        <a onClick={()=>{sessionStorage.removeItem('user');
                                                             window.location.reload();}}
-                                           className="sf-with-ul">LogOut</button>
+                                           className="sf-with-ul">LogOut</a>
                                     </li> ):(
                                     <li>
                                         <a href="/login"
@@ -251,6 +253,7 @@ export default function Header(props) {
                 </div>
             </div>
         </header>
+        </div>
 
 
     )

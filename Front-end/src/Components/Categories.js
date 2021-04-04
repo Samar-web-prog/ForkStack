@@ -224,6 +224,7 @@ export default function Categories(props) {
                                                                     className="sr-only">Color Name</span></a>
                                                                 <a href="#" style={{background:'#ebebeb'}}><span
                                                                     className="sr-only">Color Name</span></a>
+                                                            <input tupe="text"/>
                                                             </div>
                                                         </div>
                                                     </div>

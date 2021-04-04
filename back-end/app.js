@@ -8,6 +8,7 @@ var routes= require('./routes/routing');
 const cors = require('cors');
 var config =require('./database/mongodb.json');
 var mongoose =require('mongoose');
+var wardrrobeRouter=require('./controllers/wardrobeController');
 
 
 dotenv.config();
@@ -27,6 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
+//app.use('/',wardrrobeRouter);
 //app.use('/', indexRouter);
 //app.use('/users', usersRouter);
 // catch 404 and forward to error handler

@@ -3,6 +3,7 @@ import Filter from "../Components/Filter";
 import Products from "../Components/Products";
 import SubHeader from "../Components/SubHeaser";
 import React from "react";
+import AddToWardrobe from "./AddToWardrobe";
 
 export default function All(props){
     const history=useHistory();
@@ -211,6 +212,7 @@ export default function All(props){
 
             </aside>
         </div>
+        <AddToWardrobe></AddToWardrobe>
     </div>
     </>)
 }

@@ -5,7 +5,7 @@ import React from "react";
 export default function Informations(props){
     const history=useHistory();
     const finish= () => {
-        return history.replace("/preferences");
+        return history.replace("/Choices");
 
     }
 

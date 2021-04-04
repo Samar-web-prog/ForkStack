@@ -55,8 +55,9 @@ export default function Login(props){
                 Password:values.password,
             })
                 .then(response=>{setUser(true);
-                    setConnectedUser(JSON.stringify(response.data.user.FirstName));
-                    sessionStorage.setItem("user",JSON.stringify(response.data.user.FirstName).valueOf(response.data.user.username));
+                   // setConnectedUser(JSON.stringify(response.data.user.FirstName));
+                    sessionStorage.setItem("user",JSON.stringify(response.data.user));
+                    //.valueOf(response.data.user.username));
                     alert("welcome"+JSON.stringify(JSON.stringify(response.data), null, 2));
 
                     history.push('/home');
@@ -73,6 +74,7 @@ console.log(sessionStorage.getItem("user"));
 
 
     return (
+
         <div className="login-page bg-image pt-8 pb-8 pt-md-12 pb-md-12 pt-lg-17 pb-lg-17"
              style={{backgroundImage:'url(https://portotheme.com/html/molla/assets/images/backgrounds/login-bg.jpg)'}}>
             <div className="container">
@@ -104,11 +106,7 @@ console.log(sessionStorage.getItem("user"));
                                             onChange={formik.handleChange}
                                             onBlur={formik.handleBlur}
                                             value={formik.values.email}/>
-
-
-
                                                                          </div>
-
                                     <div className="form-group">
                                         <label htmlFor="singin-password-2">Password *</label>
                                         <input
