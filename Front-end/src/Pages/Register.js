@@ -66,16 +66,18 @@ export default function Register(props){
         validate,
         onSubmit: async(values )=> {
             alert(JSON.stringify(values.email, null, 2));
-            const userss=axios.post('http://localhost:3000/register/',{FirstName:values.firstName,
+            const userss=axios.post('http://localhost:3000/register/',{
+                FirstName:values.firstName,
                 LastName:values.lastName,
                 Email:values.email,
                 username:values.username,
                 Password:values.password,
                 Country:values.country
             })
-                .then(response=>{localStorage.setItem('token',response);
+                .then(response=>{//localStorage.setItem('token',response);
+                    sessionStorage.setItem("user",JSON.stringify(response.data.user));
+
                     history.push('/informations');
-                    sessionStorage.setItem("user",JSON.stringify(response.data.user.FirstName).valueOf(response.data.user.username));
                 }).catch(error=>console.log(error))
 
             localStorage.setItem("User",userss);

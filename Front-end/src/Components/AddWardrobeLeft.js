@@ -39,7 +39,6 @@ export default function AddWardrobeLeft(props){
     return(
         <>
             <div className="soon-content-wrapper">
-                <h1 className="soon-title">Add Clothes To Your Wardrobe</h1>
                 <div className="coming-countdown countdown-separator"></div>
                 <form onSubmit={formik.handleSubmit}>
                     <div className="input-group mb-5">
@@ -97,7 +96,7 @@ export default function AddWardrobeLeft(props){
 
                     <div className="input-group mb-5">
                         <div className="input-group-append">
-                            <button className="btn btn-primary btn-rounded" type="submit"disabled={!(formik.isValid && formik.dirty)}><span>Subscribe</span><i
+                            <button className="btn btn-primary btn-rounded" type="submit"disabled={!(formik.isValid && formik.dirty)}><span>Add Clothes</span><i
                                 className="icon-long-arrow-right"></i></button>
                         </div>
                     </div>

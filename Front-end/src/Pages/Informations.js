@@ -71,16 +71,17 @@ export default function Informations(props){
                                    />
                         </div>
                     </div>
+                    <br/>
                     <div className="row">
                         <div className="col-sm-6">
                             <label htmlFor="cname" className="sr-only">Name</label>
                             <select name="sortby" id="sortby"
                                     className="form-control">
                                 <option value="popularity"
-                                        defaultValue="selected">Choose Questions
+                                        defaultValue="selected">What do you Prefer
                                 </option>
-                                <option value="A">Do you..</option>
-                                <option value="B">Do You</option>
+                                <option value="A">What's your style</option>
+                                <option value="B">What's you prefer color</option>
                             </select>
                         </div>
                         <div className="col-sm-6">
@@ -92,10 +93,10 @@ export default function Informations(props){
                             <select name="sortby" id="sortby"
                                     className="form-control">
                                 <option value="popularity"
-                                        defaultValue="selected">Sex
+                                        defaultValue="selected">What do you Prefer
                                 </option>
-                                <option value="w">Women</option>
-                                <option value="M">Men</option>
+                                <option value="A">What's your style</option>
+                                <option value="B">What's you prefer color</option>
                             </select>
                         </div>
                         <div className="col-sm-6">
@@ -108,10 +109,10 @@ export default function Informations(props){
                             <select name="sortby" id="sortby"
                                     className="form-control">
                                 <option value="popularity"
-                                        defaultValue="selected">Sex
+                                        defaultValue="selected">What do you Prefer
                                 </option>
-                                <option value="w">Women</option>
-                                <option value="M">Men</option>
+                                <option value="A">What's your style</option>
+                                <option value="B">What's you prefer color</option>
                             </select>
                         </div>
                         <div className="col-sm-6">

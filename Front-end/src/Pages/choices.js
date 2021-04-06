@@ -6,12 +6,17 @@ const cardSelect = {
     transition: "transform .3s"
 };
 export default function Choises(props) {
-    const script = document.createElement("script");
 
+    const script = document.createElement("script");
+    const history=useHistory();
     script.src = "https://use.typekit.net/foobar.js";
     script.async = true;
     const [selected, setSelected] = React.useState(0);
+   const finish=()=>{
+       history.push('/home');
+       window.location.reload();
 
+   }
     document.body.appendChild(script);
     return(
         <div>
@@ -119,7 +124,7 @@ export default function Choises(props) {
                         </div>
                     </div>
                     <div className="form-footer">
-                        <button type="submit" className="btn btn-outline-primary-2"  >
+                        <button type="submit" className="btn btn-outline-primary-2" onClick={finish} >
                             <span>Envoyer</span>
                             <i className="icon-long-arrow-right"></i>
                         </button>
