@@ -13,7 +13,7 @@ var bodyParser = require('body-parser')
 var cookieparser=require('cookie-parser');
 var multer =require('multer');
 var productController=require('./controllers/productController');
-
+const WardrobeRouting = require('./routes/WardrobeRouting')
 dotenv.config();
 var app = express();
 app.use(cors());
@@ -31,6 +31,7 @@ app.get('/uploads/:name',function(req, res){
   res.sendFile(__dirname+'/uploads/'+req.params.name);
 });
 app.use(routes);
+app.use("/robe",WardrobeRouting)
 
 
 app.use(passport.initialize());

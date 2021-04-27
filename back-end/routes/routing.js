@@ -3,14 +3,19 @@ const { route } = require('../app');
 var router = express.Router();
 var multer =require('multer');
 var passport=require('passport');
+var DressesController=require('../controllers/DressesContoller');
 var verify =require('../controllers/VerifyToken');
 var preferencesController=require('../controllers/preferencesController');
 var authenticate=require('../controllers/userManager/authenticate');
-//Import controller
-var index =require( '../controllers/index');
+var forgotPassword=require('../controllers/userManager/forgotPassword');
 var controllerUser=require( '../controllers/controllerUser');
 var productController=require('../controllers/productController');
 var sendMailer=require('../controllers/userManager/sendMailer');
+
+
+
+
+
 var storage = multer.diskStorage({   
   destination: function(req, file, cb) { 
      cb(null, 'uploads/');    
@@ -27,6 +32,7 @@ router.post('/login',controllerUser.login);
 router.put('/updateUser',upload.single('image'),verify,controllerUser.Update);
 router.get('/alluser',controllerUser.getUser);
 router.delete('/deleteUser',verify,controllerUser.deleteUser);
+router.post('/forgotPassword',forgotPassword.forgotPassword);
 //LogIn with Google
 router.post('/api/googleLogin',authenticate.googleLogin);
 router.post('/api/googleRegister',authenticate.googleRegister);
@@ -43,9 +49,13 @@ router.get('/filterProduct/:type',productController.filterProduct);
 router.get('/filterProductSize/:size',productController.filterProductSize);
 router.get('/filterProductSex/:sex',productController.filterProductSex);
 router.post('/addProducts',upload.single('image'),productController.addProducts);
-
-
 router.post('/sendMail/:Email',sendMailer.sendMail);
+
+//Routes For Dresses Controller
+//router.post('/addDress',upload.single('image'),DressesController.add);
+router.post('/pic',DressesController.add);
+router.get('/allDresses',DressesController.getDresses);
+router.delete('/deleteDress/:id',DressesController.delete);
 
 
 
