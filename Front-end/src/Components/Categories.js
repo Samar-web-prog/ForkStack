@@ -11,7 +11,7 @@ import Aside from "./Aside";
 import Filter from "./Filter";
 
 export default function Categories(props) {
-    const products=useSelector(selectProducts);
+    const prod=useSelector(selectProducts);
 
     const history=useHistory();
     return(
@@ -77,7 +77,7 @@ export default function Categories(props) {
                                     </div>
                                     <div className="products mb-3">
                                         <div className="row justify-content-center">
-                                        {products?.map((product, index) => (
+                                        {prod?.map((product, index) => (
 
                            <Product
                                                 product={product}

@@ -16,7 +16,7 @@ export default function Register(props){
         const errors = {}
 
         if (!values.FirstName) {
-            errors.FirstName = 'Please Set Your First '
+            errors.FirstName = 'Please Set Your First Name '
         }
         if (!values.LastName) {
             errors.LastName = 'Please Set Your Last Name'
@@ -152,8 +152,8 @@ export default function Register(props){
                                    onBlur={formik.handleBlur}
                                    value={formik.values.FirstName}
                             />
-                            <h6 className="text-danger">  {formik.touched.FirstName && formik.errors.FirstName ? <div className='error'>{formik.errors.FirstName}</div> : null}
-                            </h6>
+                            <div className="text-danger">  {formik.touched.FirstName && formik.errors.FirstName ? <div className='error'>{formik.errors.FirstName}</div> : null}
+                            </div>
                         </div>
                         <div className="col-sm-6">
                             <label htmlFor="cname" className="sr-only">Last Name</label>
@@ -166,8 +166,8 @@ export default function Register(props){
                                    onBlur={formik.handleBlur}
                                    value={formik.values.LastName}
                             />
-                            <h6 className="text-danger">  {formik.touched.LastName && formik.errors.LastName ? <div className='error'>{formik.errors.LastName}</div> : null}
-                            </h6>
+                            <div className="text-danger">  {formik.touched.LastName && formik.errors.LastName ? <div className='error'>{formik.errors.LastName}</div> : null}
+                            </div>
                         </div>
                     </div>
                     <div className="row">
@@ -182,8 +182,8 @@ export default function Register(props){
                                    onBlur={formik.handleBlur}
                                    value={formik.values.Email}
                             />
-                            <h6 className="text-danger"> {formik.touched.Email && formik.errors.Email ? <div className='error'>{formik.errors.Email}</div> : null}
-                            </h6>
+                            <div className="text-danger"> {formik.touched.Email && formik.errors.Email ? <div className='error'>{formik.errors.Email}</div> : null}
+                            </div>
                         </div>
                         <div className="col-sm-6">
                             <label htmlFor="cname" className="sr-only">Username</label>
@@ -194,8 +194,8 @@ export default function Register(props){
                                    onChange={formik.handleChange}
                                    onBlur={formik.handleBlur}
                                    value={formik.values.username}/>
-                            <h6 className="text-danger">  {formik.touched.username && formik.errors.username ? <div className='error'>{formik.errors.username}</div> : null}
-                            </h6>
+                            <div className="text-danger">  {formik.touched.username && formik.errors.username ? <div className='error'>{formik.errors.username}</div> : null}
+                            </div>
                         </div>
                     </div>
                     <div className="row">
@@ -209,8 +209,8 @@ export default function Register(props){
                                    onChange={formik.handleChange}
                                    onBlur={formik.handleBlur}
                                    value={formik.values.Password}/>
-                            <h6 className="text-danger"> {formik.touched.Password && formik.errors.Password ? <div className='error'>{formik.errors.Password}</div> : null}
-                            </h6>
+                            <div className="text-danger"> {formik.touched.Password && formik.errors.Password ? <div className='error'>{formik.errors.Password}</div> : null}
+                            </div>
                         </div>
                         <div className="col-sm-6">
                             <label htmlFor="cpassword" className="sr-only">Confirm Password</label>
@@ -224,8 +224,8 @@ export default function Register(props){
                                    value={formik.values.confirmpassword
                                    }
                             />
-                            <h6 className="text-danger">  {formik.touched.confirmpassword && formik.errors.confirmpassword ? <div className='error'>{formik.errors.confirmpassword}</div> : null}
-                            </h6>
+                            <div className="text-danger">  {formik.touched.confirmpassword && formik.errors.confirmpassword ? <div className='error'>{formik.errors.confirmpassword}</div> : null}
+                            </div>
                         </div>
                     </div>
 
@@ -243,8 +243,8 @@ export default function Register(props){
                                    value={formik.values.Country}
 
                             />
-                            <h6 className="text-danger">  {formik.touched.Country && formik.errors.Country ? <div className='error'>{formik.errors.Country}</div> : null}
-                            </h6>
+                            <div className="text-danger">  {formik.touched.Country && formik.errors.Country ? <div className='error'>{formik.errors.Country}</div> : null}
+                            </div>
                         </div>
 
                         <div className="col-sm-6">
@@ -257,9 +257,9 @@ export default function Register(props){
                                        onChange={formik.handleChange}
                                        onBlur={formik.handleBlur}
                                        value={formik.values.Phone}/>
-                                <h6 className="text-danger">{formik.touched.Phone && formik.errors.Phone ?
+                                <div className="text-danger">{formik.touched.Phone && formik.errors.Phone ?
                                     <div className='error'>{formik.errors.Phone}</div> : null}
-                                </h6>
+                                </div>
                             </FormikProvider>
 
                         </div>

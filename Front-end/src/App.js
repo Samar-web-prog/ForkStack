@@ -12,8 +12,8 @@ import Informations from "./Pages/Informations";
 import Register from "./Pages/Register";
 import {fetchProducts} from "./Redux/slices/ProductSlice";
 import {Preferences} from "./Pages/Preferences";
+import MyWardrobe from "./Components/MyWardrobe";
 import {UserContext} from "./contexts/UserContext";
-import AddToWardrobe from "./Pages/AddToWardrobe";
 import Shop from "./Pages/Shop";
 import Choises from "./Pages/choices";
 import Type from "./Components/Type";
@@ -51,9 +51,6 @@ function App() {
                                     <Route
                                         path="/sex/:sex"
                                         render={(props) => <ShopSex {...props} />}></Route>
-                                    <Route
-                                        path="/addWardrobe"
-                                        render={(props) => <AddToWardrobe {...props} />}></Route>
                                     <Route
                                         path="/shop/:Categories"
                                         render={(props) => <SingleCategories {...props} />}
@@ -105,13 +102,16 @@ function App() {
                                         path="/forgotPassword"
                                         render={(props) => <ForgotPassword {...props} />}></Route>
                                     <Route
+                                        path="/mywardrobe"
+                                        render={(props) => <MyWardrobe {...props} />}
+                                    ></Route>
+                                    <Route
                                         exact
                                         render={() => <Home></Home>}
                                     ></Route>
 
                                 </Switch>
-                                )}
-                                </Suspense>
+                                )}                        </Suspense>
                                 </BrowserRouter>
                                 </div>
                                 <Footer></Footer>
